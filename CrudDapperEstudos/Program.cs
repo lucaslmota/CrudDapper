@@ -14,6 +14,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IUsuarioService, UsuarioService>();
+builder.Services.AddScoped<IProductsService, ProductsService>();
 builder.Services.AddAutoMapper(typeof(Program));
 
 var app = builder.Build();

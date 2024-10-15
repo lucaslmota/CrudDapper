@@ -11,10 +11,12 @@ namespace CrudDapperEstudos.Controllers
     public class UsuarioController : ControllerBase
     {
         private readonly IUsuarioService _usuarioService;
+        private readonly IProductsService _productsService;
 
-        public UsuarioController(IUsuarioService usuarioService)
+        public UsuarioController(IUsuarioService usuarioService, IProductsService productsService)
         {
             _usuarioService = usuarioService;
+            _productsService = productsService;
         }
 
         [HttpGet]
@@ -76,6 +78,18 @@ namespace CrudDapperEstudos.Controllers
                 return BadRequest(excluirUsuario);
             }
             return Ok(excluirUsuario);
+        }
+
+        [HttpGet("teste")]
+        public async Task<IActionResult> GetProducts()
+        {
+            var produ = await _productsService.GetAll();
+            if (produ == null)
+            {
+                return NotFound(produ);
+            }
+
+            return Ok(produ);
         }
 
     }

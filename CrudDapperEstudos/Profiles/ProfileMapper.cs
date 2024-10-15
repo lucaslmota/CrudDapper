@@ -9,6 +9,9 @@ namespace CrudDapperEstudos.Profiles
         public ProfileMapper()
         {
             CreateMap<Usuario, UsuarioListDTO>();
+
+            CreateMap<Product,ProductDTO>().ReverseMap();
+            CreateMap<Category,CategoryDTO>().ReverseMap();
         }
     }
 }

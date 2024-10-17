@@ -12,11 +12,13 @@ namespace CrudDapperEstudos.Controllers
     {
         private readonly IUsuarioService _usuarioService;
         private readonly IProductsService _productsService;
+        private readonly IEmployeeService _employeesService;
 
-        public UsuarioController(IUsuarioService usuarioService, IProductsService productsService)
+        public UsuarioController(IUsuarioService usuarioService, IProductsService productsService, IEmployeeService employeesService)
         {
             _usuarioService = usuarioService;
             _productsService = productsService;
+            _employeesService = employeesService;
         }
 
         [HttpGet]
@@ -84,6 +86,18 @@ namespace CrudDapperEstudos.Controllers
         public async Task<IActionResult> GetProducts()
         {
             var produ = await _productsService.GetAll();
+            if (produ == null)
+            {
+                return NotFound(produ);
+            }
+
+            return Ok(produ);
+        }
+
+        [HttpGet("territory")]
+        public async Task<IActionResult> GetManyTerritory()
+        {
+            var produ = await _employeesService.GetAll();
             if (produ == null)
             {
                 return NotFound(produ);

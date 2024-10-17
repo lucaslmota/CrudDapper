@@ -12,6 +12,9 @@ namespace CrudDapperEstudos.Profiles
 
             CreateMap<Product,ProductDTO>().ReverseMap();
             CreateMap<Category,CategoryDTO>().ReverseMap();
+
+            CreateMap<Employee,EmployeeDTO>();
+            CreateMap<Territory, TerritoryDTO>();
         }
     }
 }
